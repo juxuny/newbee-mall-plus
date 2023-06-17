@@ -10,7 +10,6 @@ services:
       - ./logs:/mnt/logs
       - ./upload:/mnt/upload
     restart: always
-    command: java -Xms512m -Xmx512m -Duser.timezone=GMT+8 -Dfile.encoding=utf-8 -jar ./target/newbee-mall-plus.jar --server.port=28079
     ports:
       - 28079:28079
     environment:

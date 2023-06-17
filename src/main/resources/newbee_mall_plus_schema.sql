@@ -78,8 +78,8 @@ INSERT INTO `tb_newbee_mall_carousel` VALUES (5, 'https://newbee-mall.oss-cn-bei
 DROP TABLE IF EXISTS `tb_newbee_mall_coupon`;
 CREATE TABLE `tb_newbee_mall_coupon`  (
                                           `coupon_id` bigint NOT NULL AUTO_INCREMENT,
-                                          `coupon_name` varchar(63) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '优惠券名称',
-                                          `coupon_desc` varchar(127) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '优惠券介绍，通常是显示优惠券使用限制文字',
+                                          `coupon_name` varchar(63) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '优惠券名称',
+                                          `coupon_desc` varchar(127) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT '' COMMENT '优惠券介绍，通常是显示优惠券使用限制文字',
                                           `coupon_total` int NOT NULL DEFAULT 0 COMMENT '优惠券数量，如果是0，则是无限量',
                                           `discount` int NULL DEFAULT 0 COMMENT '优惠金额，',
                                           `min` int NULL DEFAULT 0 COMMENT '最少消费金额才能使用优惠券。',
@@ -87,8 +87,8 @@ CREATE TABLE `tb_newbee_mall_coupon`  (
                                           `coupon_type` tinyint NULL DEFAULT 0 COMMENT '优惠券赠送类型，如果是0则通用券，用户领取；如果是1，则是注册赠券；如果是2，则是优惠券码兑换；',
                                           `coupon_status` tinyint NULL DEFAULT 0 COMMENT '优惠券状态，如果是0则是正常可用；如果是1则是过期; 如果是2则是下架。',
                                           `goods_type` tinyint NULL DEFAULT 0 COMMENT '商品限制类型，如果0则全商品，如果是1则是类目限制，如果是2则是商品限制。',
-                                          `goods_value` varchar(1023) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '商品限制值，goods_type如果是0则空集合，如果是1则是类目集合，如果是2则是商品集合。',
-                                          `coupon_code` varchar(63) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '优惠券兑换码',
+                                          `goods_value` varchar(1023) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT '' COMMENT '商品限制值，goods_type如果是0则空集合，如果是1则是类目集合，如果是2则是商品集合。',
+                                          `coupon_code` varchar(63) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '优惠券兑换码',
                                           `coupon_start_time` datetime NULL DEFAULT NULL COMMENT '优惠券开始时间',
                                           `coupon_end_time` datetime NULL DEFAULT NULL COMMENT '优惠券结束时间',
                                           `create_time` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
@@ -96,7 +96,7 @@ CREATE TABLE `tb_newbee_mall_coupon`  (
                                           `is_deleted` tinyint NULL DEFAULT 0 COMMENT '逻辑删除',
                                           PRIMARY KEY (`coupon_id`) USING BTREE,
                                           INDEX `code`(`coupon_code`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '优惠券信息及规则表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '优惠券信息及规则表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- author 13
@@ -1197,7 +1197,7 @@ CREATE TABLE `tb_newbee_mall_seckill`  (
                                            `is_deleted` tinyint(1) NULL DEFAULT 0 COMMENT '删除标识字段(0-未删除 1-已删除)',
                                            PRIMARY KEY (`seckill_id`) USING BTREE,
                                            INDEX `status_index`(`seckill_status`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- author 13
@@ -1418,6 +1418,6 @@ CREATE TABLE `tb_newbee_mall_user_coupon_record`  (
                                                       `is_deleted` tinyint NULL DEFAULT 0 COMMENT '逻辑删除',
                                                       PRIMARY KEY (`coupon_user_id`) USING BTREE,
                                                       INDEX `user_coupin_index`(`user_id`, `coupon_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 134 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '优惠券用户使用表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 134 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin COMMENT = '优惠券用户使用表' ROW_FORMAT = DYNAMIC;
 
 SET FOREIGN_KEY_CHECKS = 1;
